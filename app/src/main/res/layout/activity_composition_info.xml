@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,11 +8,10 @@
     tools:context=".MainActivity"
     tools:deviceIds="wear">
     <LinearLayout
-        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:padding="5dp"
-        android:gravity="center"
+        android:padding="10dp"
         android:layout_height="wrap_content">
+
 
         <TextView
             android:id="@+id/index_detail"
@@ -29,38 +28,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linear"
-        android:layout_above="@+id/bottom"
+        android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_box="all">
+
         <TextView
-            android:id="@+id/text_resource"
+            android:id="@+id/button1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/text_border_selector"
+            android:gravity="center"
+            android:text="作文原文" />
 
-
-        <ScrollView
+        <TextView
+            android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/text_border_selector"
+            android:gravity="center"
+            android:text="老师点评" />
 
-            <TextView
-                android:id="@+id/text_compContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"/>
-        </ScrollView>
-
+        <TextView
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/text_border_selector"
+            android:gravity="center"
+            android:text="作者感想" />
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="play"/>
-    </LinearLayout>
-</RelativeLayout>
+</androidx.wear.widget.BoxInsetLayout>

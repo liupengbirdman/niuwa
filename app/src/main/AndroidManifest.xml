@@ -41,8 +41,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".appreciation.AppreciationActivity"/>
-        <activity android:name=".compositionDetail.CompositionDetail"/>
+        <activity android:name=".compositionList.CompositionListActivity"/>
+        <activity android:name=".excellentComposition.CompositionInfo"/>
+        <activity android:name=".excellentComposition.CompositionDetail"/>
+        <activity android:name=".competition.TipsActivity"/>
+        <activity android:name=".competition.CurrentActivity"/>
+        <activity android:name=".competition.NoticeActivity"/>
+        <activity android:name=".competition.UploadActivity"/>
+        <activity android:name=".my.MyActivity"/>
+        <activity android:name=".my.JoinUsActivity"/>
+        <activity android:name=".my.AboutUsActivity"/>
 
     </application>
 

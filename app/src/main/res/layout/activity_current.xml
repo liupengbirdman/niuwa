@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/title_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="命题作文周赛" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="命题作文周赛" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/linear"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/text_compContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="竞赛bai作文的要求与注意事项：
+　　竞赛作文的完成一般包括：审题、立意、选材、组材、写作和修改六个阶段。
+　　第一辅导主题：审题
+　　审题是写命题作文的基础，也是作文成败的关键之一。审题也叫解题，要求仔细分析题目，审查题目的意义和要求，确定选材范围，决定与题目相适应的体裁、内容、行文重点、写作方法和确定文章的中心主题。有些小学生在写作文时由于没有养成认真审题的习惯，不重视审题的重要性，或者还不要审题，有的甚至连作文的题目和要求都不细看，提笔就写，拿笔就画，结果闹出偏题、跑题、扣题不紧的现象。有的甚至出现“下笔千言，离题万里”的悲剧。那么，小学命题作文如何审题呢？"
+            android:layout_marginBottom="5dp" />
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_join"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/text_border_selector"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="我要参加" />
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:padding="10dp"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/text_border_selector">
-
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_border_selector"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <TextView
-            android:id="@+id/index"
+            android:id="@+id/past_title"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="" />
+
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="" />
 
         <TextView
-            android:id="@+id/isfree"
+            android:id="@+id/author"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/isfree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="end"
+        android:paddingRight="5dp"
+        android:text="" />
+
 </androidx.wear.widget.BoxInsetLayout>

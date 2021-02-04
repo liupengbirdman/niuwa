@@ -1,29 +1,38 @@
-package com.niuwa.appreciation
+package com.niuwa.compositionList
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
 import android.view.View
-import android.widget.Toast
 import androidx.wear.widget.WearableLinearLayoutManager
+import com.niuwa.Constant
 import com.niuwa.R
-import com.niuwa.compositionDetail.CompositionDetail
-import kotlinx.android.synthetic.main.activity_appreciation.*
+import com.niuwa.excellentComposition.CompositionInfo
+import kotlinx.android.synthetic.main.activity_composition_list.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class AppreciationActivity : WearableActivity(),OnRecyItemClickListener {
+class CompositionListActivity : WearableActivity(), OnComItemClickListener {
 
+
+    private var type = Constant.APPRECIATION
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_appreciation)
+        setContentView(R.layout.activity_composition_list)
 
         // Enables Always-on
         setAmbientEnabled()
-
+        type = intent.getIntExtra(Constant.LISTTYPE, Constant.APPRECIATION)
         //创建伪数据
         val list = mutableListOf<CompositionBean>()
         for (index in 0..20) {
-          val bean = CompositionBean(index.toString(),"第${index}期","作文_${index}",if(index==0) "true" else "false")
+            val bean = CompositionBean(
+                index.toString(),
+                "第${index}期 201023",
+                "作文_${index}",
+                if (index == 0) "true" else "false",
+                "佩奇_${index}",
+                if (index == 0) "true" else "false",
+            )
             list.add(bean)
         }
         //如果想要自适应手表表盘请使用WearableLinearLayoutManager，如果不需要适配表盘可以使用LinearLayoutManager
@@ -37,13 +46,14 @@ class AppreciationActivity : WearableActivity(),OnRecyItemClickListener {
         //用户的手指必须旋转多少度才能滚过一个屏幕高度
         recycler_view.scrollDegreesPerScreen = 90f
         //设置List适配器
-        recycler_view.adapter = CompositionListAdapter(list,this)
+        recycler_view.adapter = CompositionListAdapter(list, this,type)
     }
 
-    override fun onClick(view: View?, position: Int,compositionBean:CompositionBean) {
-        var intent =Intent(this@AppreciationActivity, CompositionDetail::class.java)
-        intent.putExtra("composition",compositionBean)
-        intent.putExtra("position",position)
+    override fun onClick(view: View?, position: Int, compositionBean: CompositionBean) {
+        var intent = Intent(this@CompositionListActivity, CompositionInfo::class.java)
+        intent.putExtra("composition", compositionBean)
+        intent.putExtra(Constant.LISTTYPE,type)
+        intent.putExtra("position", position)
         startActivity(intent)
     }
 }
