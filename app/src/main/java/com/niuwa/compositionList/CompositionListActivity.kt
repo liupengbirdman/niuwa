@@ -3,6 +3,7 @@ package com.niuwa.compositionList
 import android.content.Intent
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import android.util.Log
 import android.view.View
 import androidx.wear.widget.WearableLinearLayoutManager
 import com.niuwa.Constant
@@ -10,6 +11,7 @@ import com.niuwa.R
 import com.niuwa.excellentComposition.CompositionInfo
 import kotlinx.android.synthetic.main.activity_composition_list.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.Console
 
 class CompositionListActivity : WearableActivity(), OnComItemClickListener {
 
@@ -55,5 +57,9 @@ class CompositionListActivity : WearableActivity(), OnComItemClickListener {
         intent.putExtra(Constant.LISTTYPE,type)
         intent.putExtra("position", position)
         startActivity(intent)
+    }
+
+    override fun collect(status: Boolean) {
+        Log.i("collect","......")
     }
 }

@@ -42,7 +42,8 @@ class MyActivity : WearableActivity(), View.OnClickListener {
                     startActivity(intent)
                 }
                 R.id.button4 -> {
-
+                    val intent=Intent(this@MyActivity, AboutUsActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }

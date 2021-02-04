@@ -5,4 +5,5 @@ import android.view.View
 interface OnComItemClickListener {
 
     fun onClick(view: View?, position: Int,compositionBean: CompositionBean)
+    fun collect(status:Boolean)
 }
