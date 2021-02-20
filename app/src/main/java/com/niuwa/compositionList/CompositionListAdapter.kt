@@ -1,5 +1,6 @@
 package com.niuwa.compositionList
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -34,7 +35,8 @@ class CompositionListAdapter : RecyclerView.Adapter<CompositionListAdapter.ViewH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(View.inflate(parent.context, R.layout.item_composition, null))
+        return ViewHolder( LayoutInflater.from(parent.context).inflate(R.layout.item_composition, parent, false))
+//        return ViewHolder(View.inflate(parent.context, R.layout.item_composition, parent))
     }
 
     override fun getItemCount(): Int {
