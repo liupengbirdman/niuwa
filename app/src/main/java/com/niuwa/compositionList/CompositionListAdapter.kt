@@ -46,32 +46,51 @@ class CompositionListAdapter : RecyclerView.Adapter<CompositionListAdapter.ViewH
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(type == Constant.APPRECIATION){
             holder.title.visibility=View.VISIBLE
-            holder.isfree.visibility=View.VISIBLE
             holder.author.visibility=View.GONE
             holder.past_title.visibility=View.GONE
             holder.collect.visibility=View.GONE
             holder.title.text =( position+1).toString()+"- "+ "《"+list!![position].title+"》"
-            holder.isfree.text = if(list!![position].isFree=="true") "试听" else ""
+
+            if(list!![position].isFree=="true"){
+
+                holder.isfree.visibility=View.VISIBLE
+                holder.isfree.text ="试听"
+            }else{
+
+                holder.isfree.visibility=View.GONE
+            }
 
         }else if(type == Constant.COMPETITION){
             holder.title.visibility=View.VISIBLE
-            holder.isfree.visibility=View.VISIBLE
             holder.author.visibility=View.VISIBLE
             holder.past_title.visibility=View.VISIBLE
             holder.collect.visibility=View.GONE
             holder.title.text = "优秀作品:《"+list!![position].title+"》"
-            holder.isfree.text = if(list!![position].isFree=="true") "试听" else ""
+            if(list!![position].isFree=="true"){
+
+                holder.isfree.visibility=View.VISIBLE
+                holder.isfree.text ="试听"
+            }else{
+
+                holder.isfree.visibility=View.GONE
+            }
             holder.author.text = "作者:"+list!![position].author
             holder.past_title.text = list!![position].CompeitionTitle
 
         }else  if(type == Constant.MYWORK){
             holder.title.visibility=View.VISIBLE
-            holder.isfree.visibility=View.VISIBLE
             holder.author.visibility=View.GONE
             holder.past_title.visibility=View.GONE
             holder.collect.visibility=View.GONE
             holder.title.text =( position+1).toString()+"- "+ "《"+list!![position].title+"》"
-            holder.isfree.text = if(list!![position].perfect=="true") "优秀作文" else ""
+            if(list!![position].perfect=="true"){
+
+                holder.isfree.visibility=View.VISIBLE
+                holder.isfree.text ="优秀作文"
+            }else{
+
+                holder.isfree.visibility=View.GONE
+            }
 
         }else  if(type == Constant.COLLECTION){
             holder.title.visibility=View.VISIBLE
@@ -80,10 +99,17 @@ class CompositionListAdapter : RecyclerView.Adapter<CompositionListAdapter.ViewH
             holder.past_title.visibility=View.GONE
             holder.collect.visibility=View.VISIBLE
             holder.title.text =( position+1).toString()+"- "+ "《"+list!![position].title+"》"
-            holder.collect.setImageResource(if(list!![position].perfect=="true") R.mipmap.ic_launcher else R.mipmap.ic_launcher)
+            holder.collect.setImageResource(if(list!![position].perfect=="true")
+                R.drawable.baseline_favorite_red_24dp else R.drawable.baseline_favorite_border_gray_24dp)
             holder.collect.setOnClickListener {
                 mOnItemClickListener?.collect(list!![position].perfect.toBoolean())
             }
+        }else{
+            holder.title.visibility=View.GONE
+            holder.isfree.visibility=View.GONE
+            holder.author.visibility=View.GONE
+            holder.past_title.visibility=View.GONE
+            holder.collect.visibility=View.GONE
         }
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener{

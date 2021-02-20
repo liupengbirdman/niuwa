@@ -39,8 +39,9 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:background="@drawable/text_border_selector"
+            android:background="@drawable/text_border_red_selector"
             android:gravity="center"
+            android:textColor="#e02020"
             android:text="开始" />
         <TextView
             android:id="@+id/text_dong"

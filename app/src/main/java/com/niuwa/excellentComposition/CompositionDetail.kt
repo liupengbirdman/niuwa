@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.niuwa.R
 import kotlinx.android.synthetic.main.activity_composition_detail.*
+import kotlinx.android.synthetic.main.activity_upload.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -144,6 +145,8 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.play -> if (!mediaPlayer.isPlaying) {
+
+                play.setImageResource(R.drawable.baseline_pause_circle_outline_red_24dp)
                 mediaPlayer.start() //开始播放
                 mediaPlayer.seekTo(currentPosition)
 
@@ -162,7 +165,9 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
                     }
                 }, 0, 50)
             }else
-            { mediaPlayer.pause() }//暂停播放
+            { mediaPlayer.pause()
+
+                play.setImageResource(R.drawable.baseline_play_circle_outline_red_24dp)}//暂停播放
 //            R.id.pause -> if (mediaPlayer.isPlaying) {
 //                mediaPlayer.pause() //暂停播放
 //            }

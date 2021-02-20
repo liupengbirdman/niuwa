@@ -186,11 +186,13 @@ class RecordingActivity : WearableActivity() {
     }
 
     private fun resumeRecording() {
+        TimingX.builder().add(text_time).start()
         RecordManager.getInstance().resume()
 
     }
 
     private fun pauseRecording() {
+        TimingX.builder().stop()
         RecordManager.getInstance().pause()
 
     }
