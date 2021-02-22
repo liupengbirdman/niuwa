@@ -7,10 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-object RetrofitClient {
+class RetrofitClient {
 
-   var BASE_URL = "https://www.fastmock.site/mock/7275b688d79021d43f2befe9910e0d78/test/"
-    val reqApi: RequestService by lazy {
+    private var BASE_URL = "https://www.fastmock.site/mock/faef15fefa89e695577b169212d7136e/"
+    public fun create(): RequestService {
         val builder = OkHttpClient.Builder()
 //            .addInterceptor(LoggingInterceptor.Builder()
 //                .setLevel(Level.BASIC)
@@ -36,6 +36,7 @@ object RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
-        return@lazy retrofit.create(RequestService::class.java)
+            .create(RequestService::class.java)
+        return retrofit
     }
 }

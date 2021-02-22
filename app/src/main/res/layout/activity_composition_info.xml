@@ -48,6 +48,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/text_border_selector"
+            android:visibility="gone"
             android:gravity="center"
             android:text="老师点评" />
 
@@ -56,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/text_border_selector"
+            android:visibility="gone"
             android:gravity="center"
             android:text="作者感想" />
 
