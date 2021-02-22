@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_box="all">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="准备录音" />
+        <com.niuwa.competition.AudioView
+            android:id="@+id/audioView"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="center"
+            android:text="00:00" />
+        <TextView
+            android:id="@+id/text_start"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/text_border_red_selector"
+            android:gravity="center"
+            android:textColor="#e02020"
+            android:text="开始" />
+        <TextView
+            android:id="@+id/text_dong"
+            android:layout_width="80dp"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="完成" />
+
+    </LinearLayout>
+</androidx.wear.widget.BoxInsetLayout>
