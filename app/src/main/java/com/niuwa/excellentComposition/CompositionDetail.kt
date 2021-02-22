@@ -50,30 +50,26 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
 
         // Enables Always-on
         setAmbientEnabled()
-        val id = intent.getStringExtra("id")
+        val audioPath = intent.getStringExtra("audioPath")
+        val CompContent = intent.getStringExtra("CompContent")
+        val title = intent.getStringExtra("title")
         val type = intent.getIntExtra("type", 0)
-        val list = ArrayList<CompositionResourcesBean>()
-        for (index in 0..2) {
-            val bean = CompositionResourcesBean(
-                index.toString(),
-                "foekof/feeg/fef.mp3",
-                index + 1,
-                index.toString() + "在vue项目中，父组件通过prop给子组件传值时，如果prop值是从服务器端获取，则父组件可能会传给子组件一个默认值(服务端数据还未及时获取)，那么，我们就需要实时watch这个prop值，一旦prop值有更新，将立即通知子组件更新。"
-            )
-            list.add(bean)
-        }
-        val bean = CompositionDetailBean(id.toString(), "第一期 20210210", "有一种甜", "true", "马佩奇", list)
+//        val list = ArrayList<CompositionResourcesBean>()
+//        for (index in 0..2) {
+//            val bean = CompositionResourcesBean(
+//                index.toString(),
+//                "foekof/feeg/fef.mp3",
+//                index + 1,
+//                index.toString() + "在vue项目中，父组件通过prop给子组件传值时，如果prop值是从服务器端获取，则父组件可能会传给子组件一个默认值(服务端数据还未及时获取)，那么，我们就需要实时watch这个prop值，一旦prop值有更新，将立即通知子组件更新。"
+//            )
+//            list.add(bean)
+//        }
+//        val bean = CompositionDetailBean(id.toString(), "第一期 20210210", "有一种甜", "true", "马佩奇", list)
 
-        index_detail.text = "2-"
-        title_detail.text = bean.title
-        var detail: CompositionResourcesBean? = null
-        for (index in 0 until bean.CompositionResources.size) {
-            if (bean.CompositionResources[index].resourceType == type) {
-                detail = bean.CompositionResources[index]
-            }
-        }
-        if (detail != null) {
-            when (detail.resourceType) {
+//        index_detail.text = "2-"
+        title_detail.text =title
+
+            when (type) {
                 1 -> {
                     text_resource.text = "作文原文-精彩佳句"
                 }
@@ -84,8 +80,7 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
                     text_resource.text = "作者感想-感想重点"
                 }
             }
-            text_compContent.text = detail.CompContent
-        }
+            text_compContent.text =CompContent
 
 //        audioManager =getSystemService (Service.AUDIO_SERVICE) as AudioManager
         format = SimpleDateFormat("mm:ss");
@@ -105,12 +100,14 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
 //            Log.i("checkSelfPermission","22222")
 //            initMediaPlayer();//初始化mediaplayer
 //        }
-//        initMediaPlayer();//初始化mediaplayer
+        if (audioPath != null) {
+            initMediaPlayer(audioPath)
+        };//初始化mediaplayer
     }
 
-    private fun initMediaPlayer() {
+    private fun initMediaPlayer(audioPath:String) {
         try {
-            mediaPlayer.setDataSource("http://m701.music.126.net/20210218160316/f82a7ecb993479547593a32698c34cb7/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/4959745806/482a/1a84/ca27/02c0f32c8c1b78a97988cebbee2ede1b.mp3") //指定音频文件的路径
+            mediaPlayer.setDataSource(audioPath) //指定音频文件的路径
             mediaPlayer.prepare() //让mediaplayer进入准备状态
             mediaPlayer.isLooping = true
             mediaPlayer.setOnPreparedListener(OnPreparedListener {
@@ -123,24 +120,24 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            1 -> if (grantResults.isNotEmpty() &&
-                grantResults[0] == PackageManager.PERMISSION_GRANTED
-            ) {
-                initMediaPlayer()
-            } else {
-                Toast.makeText(this@CompositionDetail, "denied access", Toast.LENGTH_SHORT).show()
-                finish()
-            }
-            else -> {
-            }
-        }
-    }
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<String?>,
+//        grantResults: IntArray
+//    ) {
+//        when (requestCode) {
+//            1 -> if (grantResults.isNotEmpty() &&
+//                grantResults[0] == PackageManager.PERMISSION_GRANTED
+//            ) {
+//                initMediaPlayer()
+//            } else {
+//                Toast.makeText(this@CompositionDetail, "denied access", Toast.LENGTH_SHORT).show()
+//                finish()
+//            }
+//            else -> {
+//            }
+//        }
+//    }
 
     override fun onClick(view: View) {
         when (view.id) {
