@@ -109,7 +109,7 @@ class CompositionDetail : WearableActivity(), View.OnClickListener {
         try {
             mediaPlayer.setDataSource(audioPath) //指定音频文件的路径
             mediaPlayer.prepare() //让mediaplayer进入准备状态
-            mediaPlayer.isLooping = true
+            mediaPlayer.isLooping = false
             mediaPlayer.setOnPreparedListener(OnPreparedListener {
                 seekBar.max = mediaPlayer.duration
                 music_length.text = format?.format(mediaPlayer.duration).toString() + ""

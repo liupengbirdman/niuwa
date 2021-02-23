@@ -49,8 +49,8 @@ class CompositionInfo : WearableActivity(), View.OnClickListener {
         when (type) {
             Constant.APPRECIATION -> call = requestService.getExcellentComposition(composition!!.id)
             Constant.COMPETITION -> call = requestService.getExcellentComposition(composition!!.id)
-            Constant.MYWORK -> call = requestService.getExcellentComposition(composition!!.id)
-            Constant.COLLECTION -> call = requestService.getExcellentComposition(composition!!.id)
+            Constant.MYWORK -> call = requestService.getMyComposition(composition!!.id)
+            Constant.COLLECTION -> call = requestService.getMyComposition(composition!!.id)
         }
         call?.enqueue(object : Callback<ApiResponse<CompositionDetailBean>> {
             override fun onFailure(
