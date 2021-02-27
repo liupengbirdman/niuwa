@@ -37,6 +37,7 @@
         <TextView
             android:id="@+id/text_resource"
             android:layout_width="match_parent"
+            android:textColor="#223b61"
             android:layout_height="wrap_content" />
 
 
