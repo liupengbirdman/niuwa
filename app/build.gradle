@@ -59,5 +59,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     implementation 'com.github.zhaolewei:ZlwAudioRecorder:v1.07'
+    implementation 'com.sunfusheng:MarqueeView:1.4.1'
 
 }

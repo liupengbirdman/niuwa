@@ -3,8 +3,9 @@ package com.niuwa.excellentComposition
 import android.content.Intent
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import android.util.Log
 import android.view.View
-import com.kuka.agvpda.bean.ApiResponse
+import com.niuwa.api.ApiResponse
 import com.niuwa.Constant
 import com.niuwa.R
 import com.niuwa.api.RetrofitClient
@@ -41,7 +42,13 @@ class CompositionInfo : WearableActivity(), View.OnClickListener {
         composition = intent.getSerializableExtra("composition") as CompositionBean
         val position = intent.getIntExtra("position", 0)
         index_detail.text = (position + 1).toString()
-        title_detail.text = composition!!.title
+        title_detail.text = when (type) {
+            Constant.APPRECIATION -> composition!!.title
+            Constant.COMPETITION -> composition!!.title
+            Constant.MYWORK -> composition!!.title
+            Constant.COLLECTION -> composition!!.title + "-" + composition!!.author
+            else -> ""
+        }
         if (type == Constant.COMPETITION)
             button3.visibility = View.GONE
         val requestService = RetrofitClient().create()
@@ -50,38 +57,49 @@ class CompositionInfo : WearableActivity(), View.OnClickListener {
             Constant.APPRECIATION -> call = requestService.getExcellentComposition(composition!!.id)
             Constant.COMPETITION -> call = requestService.getExcellentComposition(composition!!.id)
             Constant.MYWORK -> call = requestService.getMyComposition(composition!!.id)
-            Constant.COLLECTION -> call = requestService.getMyComposition(composition!!.id)
+            Constant.COLLECTION -> call = requestService.getMyFavoritesComposition(composition!!.id)
         }
         call?.enqueue(object : Callback<ApiResponse<CompositionDetailBean>> {
             override fun onFailure(
                 call: Call<ApiResponse<CompositionDetailBean>>,
                 t: Throwable
             ) {
-
+                Log.i("onFailure=", t.message.toString())
             }
 
             override fun onResponse(
                 call: Call<ApiResponse<CompositionDetailBean>>,
                 response: Response<ApiResponse<CompositionDetailBean>>
             ) {
-                if (response.body() != null && response.body()!!.data.CompositionResources.size > 0) {
-                    for (data in response.body()!!.data.CompositionResources) {
-                        if (data.resourceType == 1) {//原文
-                            audioPath1 = data.audioPath
-                            CompContent1=data.CompContent
-                            button1.visibility=View.VISIBLE
-                        }
-                        if (data.resourceType == 2) {//点评
-                            audioPath2 = data.audioPath
-                            CompContent2=data.CompContent
-                            button2.visibility=View.VISIBLE
+                Log.i("onResponse=", response.body().toString())
+                if (response.body() != null) {
+//                    val composition = response.body()!!.data.Composition
+//                    title_detail.text = when (type) {
+//                        Constant.APPRECIATION -> composition.title
+//                        Constant.COMPETITION -> composition.title
+//                        Constant.MYWORK -> composition.title
+//                        Constant.COLLECTION -> composition.title + "-" + composition.author
+//                        else -> ""
+//                    }
+                    if (response.body()!!.data.CompositionResources.isNotEmpty()) {
+                        for (data in response.body()!!.data.CompositionResources) {
+                            if (data.resourceType == 1) {//原文
+                                audioPath1 = data.audioPath
+                                CompContent1 = data.CompContent
+                                button1.visibility = View.VISIBLE
+                            }
+                            if (data.resourceType == 2) {//点评
+                                audioPath2 = data.audioPath
+                                CompContent2 = data.CompContent
+                                button2.visibility = View.VISIBLE
 
-                        }
-                        if (data.resourceType == 3) {//自评
-                            audioPath3 = data.audioPath
-                            CompContent3=data.CompContent
-                            button3.visibility=View.VISIBLE
+                            }
+                            if (data.resourceType == 3) {//自评
+                                audioPath3 = data.audioPath
+                                CompContent3 = data.CompContent
+                                button3.visibility = View.VISIBLE
 
+                            }
                         }
                     }
                 }

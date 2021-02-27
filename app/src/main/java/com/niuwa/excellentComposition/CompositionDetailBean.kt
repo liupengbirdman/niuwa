@@ -1,4 +1,5 @@
+
 package com.niuwa.excellentComposition
+import com.niuwa.compositionList.CompositionBean
 import java.io.Serializable
-data class CompositionDetailBean(var id: String, var CompeitionTitle:String, var title:String,
-                                 var isFree:String,var author:String,var CompositionResources:ArrayList<CompositionResourcesBean>):Serializable
+data class CompositionDetailBean(var Composition:CompositionBean,var CompositionResources:List<CompositionResourcesBean>):Serializable

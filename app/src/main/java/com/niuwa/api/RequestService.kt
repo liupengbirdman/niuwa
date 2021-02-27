@@ -1,6 +1,5 @@
 package com.niuwa.api
 
-import com.kuka.agvpda.bean.ApiResponse
 import com.niuwa.compositionList.CompositionBean
 import com.niuwa.excellentComposition.CompositionDetailBean
 import com.niuwa.my.QRCodeBean
@@ -13,19 +12,22 @@ interface RequestService {
     fun getCompositionList():
             Call<ApiResponse<ArrayList<CompositionBean>>>
     @GET("Api/MyComposition/GetAll")
-    fun getMyWorkList(@Query("Userid") Userid : String,):
+    fun getMyWorkList(@Query("Userid") Userid : String):
             Call<ApiResponse<ArrayList<CompositionBean>>>
     @GET("Api/MyFavorites/GetAll")
-    fun getMyFavoritesList(@Query("Userid") Userid : String,):
+    fun getMyFavoritesList(@Query("Userid") Userid : String):
             Call<ApiResponse<ArrayList<CompositionBean>>>
+    @GET("Api/MyFavorites/Get")
+    fun getMyFavoritesComposition(@Query("id") id : String):
+            Call<ApiResponse<CompositionDetailBean>>
     @GET("Api/ExcellentComposition/Get")
-    fun getExcellentComposition(@Query("id") id : String,):
+    fun getExcellentComposition(@Query("id") id : String):
             Call<ApiResponse<CompositionDetailBean>>
     @GET("Api/MyComposition/Get")
-    fun getMyComposition(@Query("id") id : String,):
+    fun getMyComposition(@Query("id") id : String):
             Call<ApiResponse<CompositionDetailBean>>
     @GET("Api/Shoping/Get")
-    fun getQRCode(@Query("Userid") Userid: String?,):
+    fun getQRCode(@Query("Userid") Userid: String?):
             Call<ApiResponse<QRCodeBean>>
 
 

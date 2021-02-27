@@ -2,12 +2,10 @@ package com.niuwa.my
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.Build
 import android.os.Bundle
-import android.os.StrictMode
 import android.support.wearable.activity.WearableActivity
 import android.util.Base64
-import com.kuka.agvpda.bean.ApiResponse
+import com.niuwa.api.ApiResponse
 import com.niuwa.MainApplication
 import com.niuwa.R
 import com.niuwa.api.RetrofitClient

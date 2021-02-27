@@ -1,4 +1,3 @@
-package com.kuka.agvpda.bean
 
 abstract class BaseResponse<T> {
 

@@ -6,10 +6,9 @@ import android.support.wearable.activity.WearableActivity
 import android.util.Log
 import android.view.View
 import androidx.wear.widget.WearableLinearLayoutManager
-import com.kuka.agvpda.bean.ApiResponse
+import com.niuwa.api.ApiResponse
 import com.niuwa.Constant
 import com.niuwa.R
-import com.niuwa.api.RequestService
 import com.niuwa.api.RetrofitClient
 import com.niuwa.excellentComposition.CompositionInfo
 import kotlinx.android.synthetic.main.activity_composition_list.*

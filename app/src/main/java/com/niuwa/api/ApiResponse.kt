@@ -1,4 +1,7 @@
-package com.kuka.agvpda.bean
+package com.niuwa.api
+
+import BaseResponse
+
 
 data class ApiResponse<T>(var code: Int, var errorMsg: String, var data: T) : BaseResponse<T>() {
 
